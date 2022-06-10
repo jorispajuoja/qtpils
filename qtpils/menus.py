@@ -27,9 +27,6 @@ class MenuAction(QAction):
         Args:
             action_name (str): Menu text, also set object name action_nameAction
             parent_menu (QMenu): Menu to which to add the MenuAction
-            function (Callable): Connect a function, action_name will be passed as argument
-            func_args (Optional[list], optional): Add extra arguments to the function. Defaults to None.
-            text_arg (bool, optional): Set to False if action_name should not be passed as function argument. Defaults to True.
         """
         super().__init__(**properties)
         self.setObjectName(f"{action_name}Action")
