@@ -5,13 +5,15 @@ from typing import Optional
 from qtpy.QtWidgets import QLayout, QWidget
 
 
-def add_widget_to_layout(widget: QWidget, layout: QLayout, position: Optional[list]) -> None:
+def add_widget_to_layout(
+    widget: QWidget, layout: QLayout, position: Optional[list]
+) -> None:
     """Add widget to target layout
 
     Args:
         widget (QWidget): Widget to be added to target QLayout
         layout (QLayout): Target QLayout that the widget is added to
-        position (Optional[list]): Optional list for adding to gridlayout, defaults to [0,0,1,1]
+        position (Optional[list]): when using QGridLayout add the position [y,x,yspan,xspan].
 
     Returns:
         None: adds widget to layout
@@ -27,17 +29,18 @@ def add_widget_to_layout(widget: QWidget, layout: QLayout, position: Optional[li
             final_position[2],
             final_position[3],
         )
-    else:
-        return layout.addWidget(widget)
+    return layout.addWidget(widget)
 
 
-def add_item_to_layout(widget: QWidget, layout: QLayout, position: Optional[list]) -> None:
+def add_item_to_layout(
+    widget: QWidget, layout: QLayout, position: Optional[list]
+) -> None:
     """add an QItem to target layout
 
     Args:
         widget (QWidget): Item to be added to target QLayout
         layout (QLayout): Target QLayout that the item is added to
-        position (Optional[list]): Optional list for adding to gridlayout, defaults to [0,0,1,1]
+        position (Optional[list]): when using QGridLayout add the position [y,x,yspan,xspan].
 
     Returns:
         None: adds item to layout
@@ -53,5 +56,4 @@ def add_item_to_layout(widget: QWidget, layout: QLayout, position: Optional[list
             final_position[2],
             final_position[3],
         )
-    else:
-        return layout.addItem(widget)
+    return layout.addItem(widget)

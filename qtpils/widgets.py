@@ -3,20 +3,9 @@ from typing import Optional
 
 from qtpy.QtCore import QDateTime, QRegExp, Qt
 from qtpy.QtGui import QRegExpValidator
-from qtpy.QtWidgets import (
-    QComboBox,
-    QDateEdit,
-    QDoubleSpinBox,
-    QLabel,
-    QLayout,
-    QLCDNumber,
-    QLineEdit,
-    QPushButton,
-    QSizePolicy,
-    QSpacerItem,
-    QSpinBox,
-    QTableWidget,
-)
+from qtpy.QtWidgets import (QComboBox, QDateEdit, QDoubleSpinBox, QLabel,
+                            QLayout, QLCDNumber, QLineEdit, QPushButton,
+                            QSizePolicy, QSpacerItem, QSpinBox, QTableWidget)
 
 from .construct import add_item_to_layout, add_widget_to_layout
 
@@ -31,16 +20,12 @@ class Button(QPushButton):
         position: Optional[list] = None,
         **properties,
     ):
-        """Create a QPushButton, add it to a layout, connect a function
+        """Create a QPushButton, add it to target layout
 
         Args:
             button_text (str): set button text, and set object name as textButton
             target_layout (QLayout): set layout to which the button should be added
-            function (Callable): add a function to clicked, button_text is passed as an argument by default
-            position (Optional[list], optional): when using QGridLayout add the position [y,x,yspan,xspan]. Defaults to None.
-            func_args (Optional[list], optional): add extra arguments that should be passed to the function. Defaults to None.
-            text_arg (bool, optional): set to False if button_text should not be passed as an argument. Defaults to True.
-            custom_class (Type, optional): add an optional custom QPushButton class. Defaults to None.
+            position (Optional[list], optional): When using QGridLayout [y,x,yspan,xspan].
         """
         super().__init__(**properties)
         self.setObjectName(f"{button_text}Button")
@@ -62,13 +47,10 @@ class ComboBox(QComboBox):
         """Create a QComboBox, add to layout, set list, add function to textActivated
 
         Args:
-            box_name (str): Object name as box_nameComboBox
+            box_name (str): set Object name as box_nameComboBox
             target_layout (QLayout): add ComboBox to this layout
             item_list (list): list of items in ComboBox
-            position (Optional[list], optional): When using QGridLayout add position [y,x,yspan,xspan]. Defaults to None.
-            function (Optional[Callable], optional): add function with textActivated, pass current text as argument. Defaults to None.
-            func_args (Optional[list], optional): add other arguments to be passed to the function. Defaults to None.
-            text_arg (bool, optional): set to False in case currentText() should not be passed as an argument. Defaults to True.
+            position (Optional[list], optional): When using QGridLayout [y,x,yspan,xspan].
         """
         super().__init__(**properties)
         self.setObjectName(f"{box_name}ComboBox")
@@ -92,10 +74,7 @@ class DateEdit(QDateEdit):
         Args:
             date_edit_name (str): set object name to date_edit_nameDateEdit
             target_layout (QLayout): add DateEdit to this layout
-            position (Optional[list], optional): When using QGridLayout [y,x,yspan,xspan]. Defaults to None.
-            function (Optional[Callable], optional): Connect function to dateChanged, pass date() as argument. Defaults to None.
-            func_args (Optional[list], optional): add other arguments to funcion. Defaults to None.
-            text_arg (bool, optional): set to False if date() should not be passed as argument. Defaults to True.
+            position (Optional[list], optional): When using QGridLayout [y,x,yspan,xspan].
         """
         super().__init__(**properties)
         self.setObjectName(f"{date_edit_name}DateEdit")
@@ -122,10 +101,10 @@ class DoubleSpinBox(QDoubleSpinBox):
         Args:
             spinbox_name (str): set object name to spinbox_nameDoubleSpinBox
             target_layout (QLayout): add DoubleSpinBox to layout
+            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan].
             single_step (float, optional): set single step. Defaults to 0.1.
             decimals (int, optional): set amount of decimals. Defaults to 1.
             maximum (int, optional): set maximum number. Defaults to 999.
-            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan]. Defaults to None.
         """
         super().__init__(**properties)
         self.setObjectName(f"{spinbox_name}DoubleSpinBox")
@@ -151,8 +130,8 @@ class Label(QLabel):
         Args:
             label_text (str): label text, and set object name label_textLabel
             target_layout (QLayout): add Label to this layout
-            alignment (str, optional): set Label alignment as left | l or center | c or right | r. Defaults to "left".
-            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan]. Defaults to None.
+            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan].
+            alignment (str, optional): left | l or center | c or right | r. Defaults to "left".
         """
         super().__init__(**properties)
         self.setObjectName(f"{label_text}Label")
@@ -182,7 +161,7 @@ class LCD(QLCDNumber):
         Args:
             lcd_name (str): set object name lcd_nameLCD
             target_layout (QLayout): add LCD to layout
-            position (Optional[list], optional): When using QGridLayout [y,x,yspan,xspan]. Defaults to None.
+            position (Optional[list], optional): When using QGridLayout [y,x,yspan,xspan].
         """
         super().__init__(**properties)
         self.setObjectName(f"{lcd_name}LCD")
@@ -205,8 +184,8 @@ class LineEdit(QLineEdit):
         Args:
             line_edit_name (str): set object name line_edit_nameLineEdit
             target_layout (QLayout): add LineEdit to layout
-            regex_rule (str, optional): add regex validator, enter regex as string. Defaults to None.
-            position (Optional[list], optional): when using QgridLayout [y,x,yspan,xspan]. Defaults to None.
+            position (Optional[list], optional): when using QgridLayout [y,x,yspan,xspan].
+            regex_rule (str, optional): Enter regex validator as string. Defaults to None.
         """
         super().__init__(**properties)
         self.setObjectName(f"{line_edit_name}LineEdit")
@@ -233,11 +212,12 @@ class SpacerItem(QSpacerItem):
 
         Args:
             target_layout (QLayout): add to layout
+            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan].
             h_size (int, optional): horizontal size. Defaults to 1.
             v_size (int, optional): vertical size. Defaults to 1.
             h_expand (bool, optional): expand horizontally. Defaults to False.
             v_expand (bool, optional): expand vertically. Defaults to False.
-            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan]. Defaults to None.
+
         """
         arguments = [h_size, v_size, QSizePolicy.Minimum, QSizePolicy.Minimum]
         if h_expand:
@@ -263,8 +243,7 @@ class SpinBox(QSpinBox):
         Args:
             spinbox_name (str): set object name spinbox_nameSpinBox
             target_layout (QLayout): add to layout
-            maximum (int, optional): maximum number. Defaults to 999.
-            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan]. Defaults to None.
+            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan].
         """
         super().__init__(**properties)
         self.setObjectName(f"{spinbox_name}SpinBox")
@@ -286,7 +265,7 @@ class TableWidget(QTableWidget):
         Args:
             table_widget_name (str): set object name table_widget_nameTableWidget
             target_layout (QLayout): add to layout
-            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan]. Defaults to None.
+            position (Optional[list], optional): when using QGridLayout [y,x,yspan,xspan].
         """
         super().__init__(**properties)
         self.setObjectName(table_widget_name)
